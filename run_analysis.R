@@ -43,5 +43,7 @@ colnames(combine_X) <- variablename[meanandstandard[,1],2]
 # create a 2nd tidy data set
 colnames(combine_sub) <- "subject"
 totals <- cbind(combine_X, activitylabel, combine_sub)
-
+# apply the main function to activitylabel and subject
 totalsmmean <- totals %>% group_by(activitylabel,subject) %>% summarize_each(funs(mean))
+# write 2nd tidy data set
+write.table(totalsmmean,"./UCI HAR Dataset/tidy.txt")
